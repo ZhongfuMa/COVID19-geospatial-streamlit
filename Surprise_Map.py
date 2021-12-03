@@ -143,8 +143,7 @@ def app():
         
         
     url_county=os.getcwd()+'/data/COVID19_bycounty.pickle'
-    st.write(os.getcwd())
-    st.write(os.listdir())
+
     if scale == "County":
         inventory_df = get_inventory_data(url_county,month,characteristic.lower(),sp_attribute,scale.lower())
 
