@@ -51,11 +51,11 @@ def get_inventory_data(url,month,ch,sp_attribute,scale):
 @st.cache
 def get_geom_data(category):
 
-    prefix =os.getcwd()+'\\data'
+    prefix =os.getcwd()+'//data'
     
     links = {
-        "state": prefix + "\\us_states.geojson",
-        "county": prefix + "\\us_counties.geojson"
+        "state": prefix + "//us_states.geojson",
+        "county": prefix + "//us_counties.geojson"
     }
 
     gdf = gpd.read_file(links[category])
