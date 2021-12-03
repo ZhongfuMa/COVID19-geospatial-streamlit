@@ -83,7 +83,7 @@ def select_non_null(gdf, col_name):
 
 
 def select_null(gdf, col_name):
-    new_gdf=gdf.loc[gdf[col_name]==0 or gdf[col_name].isna()]
+    new_gdf=gdf.loc[gdf[col_name]==0 | gdf[col_name].isna()]
     return new_gdf
 
 def app():
