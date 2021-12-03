@@ -77,12 +77,12 @@ def join_attributes(gdf, df, category):
 
 
 def select_non_null(gdf, col_name):
-    new_gdf=gdf.loc[gdf[col_name]!=0]
+    new_gdf=gdf.loc[gdf[col_name]!=0 and !gdf[col_name].isna()]
     return new_gdf
 
 
 def select_null(gdf, col_name):
-    new_gdf=gdf.loc[gdf[col_name]==0]
+    new_gdf=gdf.loc[gdf[col_name]==0 or gdf[col_name].isna()]
     return new_gdf
 
 def app():
