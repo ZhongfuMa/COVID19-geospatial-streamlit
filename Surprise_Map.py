@@ -51,7 +51,7 @@ def get_inventory_data(url,month,ch,sp_attribute,scale):
 @st.cache
 def get_geom_data(category):
 
-    prefix =os.getcwd()+'\\data\\'
+    prefix =os.getcwd()+'/data/'
     
     links = {
         "state": prefix + "us_states.geojson",
@@ -136,13 +136,13 @@ def app():
     else:
         month=str(selected_year)+'-'+str(selected_month)
     gdf = get_geom_data(scale.lower())
-    url_state=os.getcwd()+'\\data\\COVID19_bystate.pickle'
+    url_state=os.getcwd()+'/data/COVID19_bystate.pickle'
     
     if scale == "State":
         inventory_df = get_inventory_data(url_state,month,characteristic.lower(),sp_attribute,scale.lower())
         
         
-    url_county=os.getcwd()+'\\data\\COVID19_bycounty.pickle'
+    url_county=os.getcwd()+'/data/COVID19_bycounty.pickle'
     st.write(os.getcwd())
     st.write(os.listdir())
     if scale == "County":
