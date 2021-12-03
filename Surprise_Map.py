@@ -51,11 +51,11 @@ def get_inventory_data(url,month,ch,sp_attribute,scale):
 @st.cache
 def get_geom_data(category):
 
-    prefix =os.getcwd()+'//data'
+    prefix ='https://raw.githubusercontent.com/ZhongfuMa/COVID19-geospatial-streamlit/data/'
     
     links = {
-        "state": prefix + "//us_states.geojson",
-        "county": prefix + "//us_counties.geojson"
+        "state": prefix + "us_states.geojson",
+        "county": prefix + "us_counties.geojson"
     }
 
     gdf = gpd.read_file(links[category])
@@ -136,13 +136,13 @@ def app():
     else:
         month=str(selected_year)+'-'+str(selected_month)
     gdf = get_geom_data(scale.lower())
-    url_state=r'.\data\COVID19_bystate.pickle'
+    url_state='https://raw.githubusercontent.com/ZhongfuMa/COVID19-geospatial-streamlit/data/COVID19_bystate.pickle'
     
     if scale == "State":
         inventory_df = get_inventory_data(url_state,month,characteristic.lower(),sp_attribute,scale.lower())
         
         
-    url_county=r'.\data\COVID19_bycounty.pickle'
+    url_county='https://raw.githubusercontent.com/ZhongfuMa/COVID19-geospatial-streamlit/data/COVID19_bycounty.pickle'
     if scale == "County":
         inventory_df = get_inventory_data(url_county,month,characteristic.lower(),sp_attribute,scale.lower())
 
