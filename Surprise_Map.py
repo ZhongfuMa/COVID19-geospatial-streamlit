@@ -77,7 +77,7 @@ def join_attributes(gdf, df, category):
 
 
 def select_non_null(gdf, col_name):
-    new_gdf=gdf.loc[gdf[col_name]!=0 and !gdf[col_name].isna()]
+    new_gdf=gdf.loc[gdf[col_name]!=0 and ~gdf[col_name].isna()]
     return new_gdf
 
 
