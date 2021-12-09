@@ -151,7 +151,7 @@ def app():
 
     row2_col1, row2_col2, row2_col3 = st.columns(
         [0.6, 0.68, 0.7]
-    )#row2_col4, row2_col5, row2_col6 , 0.7, 1.5, 0.8
+    )
 
     with row2_col1:
         palette = st.selectbox("Color palette", cm.list_colormaps(), index=2)
@@ -159,17 +159,7 @@ def app():
         n_colors = st.slider("Number of colors", min_value=2, max_value=20, value=8)
     with row2_col3:
         show_nodata = st.checkbox("Show nodata areas", value=True)
-#     with row2_col4:
-#         show_3d = st.checkbox("Show 3D view", value=False)
-#     with row2_col5:
-#         if show_3d:
-#             elev_scale = st.slider(
-#                 "Elevation scale", min_value=1, max_value=1000000, value=1, step=10
-#             )
-#             with row2_col6:
-#                 st.info("Press Ctrl and move the left mouse button.")
-#         else:
-#             elev_scale = 1
+
 
     gdf = join_attributes(gdf, inventory_df, scale.lower())
     gdf_null = select_null(gdf, sp_attribute)
@@ -194,7 +184,6 @@ def app():
     min_value = gdf[sp_attribute].min()
     max_value = gdf[sp_attribute].max()
     color = "color"
-    # color_exp = f"[({selected_col}-{min_value})/({max_value}-{min_value})*255, 0, 0]"
     color_exp = f"[R, G, B]"
 
     geojson = pdk.Layer(
